@@ -10,28 +10,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
 </head>
 <body>
-
     <div id="app">
         <div class="container">
             <h1>Todo List</h1>
+            
+            <input type="text" v-model="todo">
+            <input type="submit" value="add" @click="storeTodo">
 
             <ol>
                 <li v-for="todo in todos">
                     {{ todo }}
-
                 </li>
             </ol>
         </div>
     </div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-
     <script>
         new Vue({
             el: '#app',
             
             data: {
+                todo: '',
                 todos: ['Go to market', 'Buy new course']
+            },
+
+            methods: {
+                storeTodo(){
+                    this.todos.push(this.todo)
+                }
             }
 
         })
