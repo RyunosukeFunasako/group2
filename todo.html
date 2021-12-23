@@ -14,12 +14,21 @@
         <div class="container">
             <h1>Todo List</h1>
             
-            <input type="text" v-model="todo">
-            <input type="submit" value="add" @click="storeTodo">
+            <div v-if="!isEditing">
+                <input type="text" v-model="todo">
+                <input type="submit" value="add" @click="storeTodo">
+            </div>
+
+            <div v-else>
+                <input type="text" v-model="todo">
+                <input type="submit" value="update" @click="updateTodo">
+            </div>
 
             <ol>
-                <li v-for="todo in todos">
+                <li v-for="(todo, index) in todos">
                     {{ todo }}
+
+                    <button @click='editTodo(index,todo)'>Edit</button>
                 </li>
             </ol>
         </div>
@@ -31,13 +40,27 @@
             el: '#app',
             
             data: {
+                isEditing: false,
+                selectedIndex: null,
                 todo: '',
-                todos: ['Go to market', 'Buy new course']
+                todos: []
             },
 
             methods: {
                 storeTodo(){
                     this.todos.push(this.todo)
+                    this.todo = ''
+                },
+
+                editTodo(index,todo){
+                    this.todo = todo
+                    this.selectedIndex = index
+                    this.isEditing = true
+                },
+
+                updateTodo(){
+                    this.todos.splice(this.selectedIndex,1,this.todo)
+                    this.isEditing = false
                 }
             }
 
