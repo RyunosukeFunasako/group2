@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,63 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+    <style>
+        .title span {
+            display: inline-block;
+            animation: slideIn 2s forwards;
+        }
+
+        .todoelement {
+            animation: poyoyon 0.3s cubic-bezier(0.12, 0, 0.39, 0) 1 forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(180px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        }
+
+        @keyframes poyoyon {
+            0% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateX(0);
+            }
+
+            65% {
+                transform: translateX(20px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+
+            20%,
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div id="app">
         <div class="container">
-            <h1>Todo List</h1>
-            
+            <h1 class="title">
+                <span>TodoList</span>
+            </h1>
+
             <div v-if="!isEditing">
                 <input type="text" v-model="todo">
                 <input type="submit" value="add" @click="storeTodo">
@@ -25,20 +77,19 @@
             </div>
 
             <ol>
-                <li v-for="(todo, index) in todos">
+                <li class="todoelement" v-for="(todo, index) in todos">
                     {{ todo }}
-
                     <button @click='editTodo(index,todo)'>Edit</button>
                 </li>
             </ol>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <script>
         new Vue({
             el: '#app',
-            
+
             data: {
                 isEditing: false,
                 selectedIndex: null,
@@ -47,19 +98,19 @@
             },
 
             methods: {
-                storeTodo(){
+                storeTodo() {
                     this.todos.push(this.todo)
                     this.todo = ''
                 },
 
-                editTodo(index,todo){
+                editTodo(index, todo) {
                     this.todo = todo
                     this.selectedIndex = index
                     this.isEditing = true
                 },
 
-                updateTodo(){
-                    this.todos.splice(this.selectedIndex,1,this.todo)
+                updateTodo() {
+                    this.todos.splice(this.selectedIndex, 1, this.todo)
                     this.isEditing = false
                 }
             }
@@ -67,4 +118,3 @@
         })
     </script>
 </body>
-
