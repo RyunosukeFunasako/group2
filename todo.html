@@ -113,6 +113,7 @@
                 updateTodo() {
                     this.todos.splice(this.selectedIndex, 1, this.todo)
                     this.isEditing = false
+                    this.todo = " "
                 },
 
                 deleteTodo(index) {
