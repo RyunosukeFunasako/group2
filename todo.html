@@ -80,6 +80,7 @@
                 <li class="todoelement" v-for="(todo, index) in todos">
                     {{ todo }}
                     <button @click='editTodo(index,todo)'>Edit</button>
+                    <button @click='deleteTodo(index)'>Delete</button>
                 </li>
             </ol>
         </div>
@@ -112,6 +113,10 @@
                 updateTodo() {
                     this.todos.splice(this.selectedIndex, 1, this.todo)
                     this.isEditing = false
+                },
+
+                deleteTodo(index) {
+                    this.todos.splice(index, 1)
                 }
             }
 
