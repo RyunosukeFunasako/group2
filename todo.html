@@ -100,7 +100,11 @@
 
             methods: {
                 storeTodo() {
+                    if(this.todo == ''){
+                        alert("Please enter your Todo.");
+                    }else{
                     this.todos.push(this.todo)
+                    }
                     this.todo = ''
                 },
 
@@ -111,9 +115,14 @@
                 },
 
                 updateTodo() {
-                    this.todos.splice(this.selectedIndex, 1, this.todo)
-                    this.isEditing = false
-                    this.todo = " "
+                    if(this.todo == ''){
+                        alert("Please enter your Todo.");
+                    }else{
+                        this.todos.splice(this.selectedIndex, 1, this.todo)
+                        this.isEditing = false
+                        this.todo = " "
+                    }
+
                 },
 
                 deleteTodo(index) {
