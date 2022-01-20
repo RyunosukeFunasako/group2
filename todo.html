@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
 
     <style>
+        .language {
+            width: 200px;
+        }
         .title span {
             display: inline-block;
             animation: slideIn 2s forwards;
@@ -66,14 +69,20 @@
                 <span>TodoList</span>
             </h1>
 
+            <select v-model="pulldown" class="language">
+                <option value="0">English</option>
+                <option value="1">日本語</option>
+                <option value="2">中文</option>
+            </select>
+
             <div v-if="!isEditing">
                 <input type="text" v-model="todo">
-                <input type="submit" value="add" @click="storeTodo">
+                <input type="submit" v-bind:value="ADD[pulldown]" @click="storeTodo">
             </div>
 
             <div v-else>
                 <input type="text" v-model="todo">
-                <input type="submit" value="update" @click="updateTodo">
+                <input type="submit" v-bind:value="UPDATE[pulldown]" @click="updateTodo">
                 You choose "{{ todos[selectedIndex]}}".
             </div>
 
@@ -81,8 +90,8 @@
                 <li class="todoelement" v-for="(todo, index) in todos">
                     {{ todo }}
                     <div v-if="!isEditing">
-                        <button @click='editTodo(index,todo)'>Edit</button>
-                        <button @click='deleteTodo(index)'>Delete</button>
+                        <button @click='editTodo(index,todo)'>{{ EDIT[pulldown] }}</button>
+                        <button @click='deleteTodo(index)'>{{ DELETE[pulldown] }}</button>
                     </div>
                 </li>
             </ol>
@@ -98,7 +107,12 @@
                 isEditing: false,
                 selectedIndex: null,
                 todo: '',
-                todos: []
+                todos: [],
+                pulldown: '0',
+                ADD: ['ADD', '追加', '增加'],
+                EDIT: ['EDIT', '編集', '编辑'],
+                DELETE: ['DELETE', '削除', '删除'],
+                UPDATE: ['UPDATE', '更新', '更新']
             },
 
             methods: {
