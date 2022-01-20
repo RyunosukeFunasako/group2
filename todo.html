@@ -74,13 +74,16 @@
             <div v-else>
                 <input type="text" v-model="todo">
                 <input type="submit" value="update" @click="updateTodo">
+                You choose "{{ todos[selectedIndex]}}".
             </div>
 
             <ol>
                 <li class="todoelement" v-for="(todo, index) in todos">
                     {{ todo }}
-                    <button @click='editTodo(index,todo)'>Edit</button>
-                    <button @click='deleteTodo(index)'>Delete</button>
+                    <div v-if="!isEditing">
+                        <button @click='editTodo(index,todo)'>Edit</button>
+                        <button @click='deleteTodo(index)'>Delete</button>
+                    </div>
                 </li>
             </ol>
         </div>
