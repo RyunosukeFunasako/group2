@@ -73,6 +73,9 @@
                 <option value="0">English</option>
                 <option value="1">日本語</option>
                 <option value="2">中文</option>
+                <option value="3">हिन्दी</option><!---Hindi---> 
+                <option value="4">Español</option><!---Spanish---> 
+                <option value="5">عربى</option> <!---Arabic---> 
             </select>
 
             <div v-if="!isEditing">
@@ -109,10 +112,38 @@
                 todo: '',
                 todos: [],
                 pulldown: '0',
-                ADD: ['ADD', '追加', '增加'],
-                EDIT: ['EDIT', '編集', '编辑'],
-                DELETE: ['DELETE', '削除', '删除'],
-                UPDATE: ['UPDATE', '更新', '更新']
+                ADD: [
+                    'ADD',
+                    '追加',
+                    '增加',
+                    'जोड़ें',
+                    'agregar',
+                    'يضيف'
+                ],
+                EDIT: [
+                    'EDIT',
+                    '編集', 
+                    '编辑',
+                    'संपादित करें',
+                    'Editar',
+                    'تعديل'
+                ],
+                DELETE: [
+                    'DELETE', 
+                    '削除', 
+                    '删除',
+                    'हटाना',
+                    'Eliminar',
+                    'حذف'
+                ],
+                UPDATE: [
+                    'UPDATE', 
+                    '更新', 
+                    '更新',
+                    'अद्यतन',
+                    'actualizar',
+                    'للتحديث'
+                ]
             },
 
             methods: {
