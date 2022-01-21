@@ -73,6 +73,9 @@
                 <option value="0">English</option>
                 <option value="1">日本語</option>
                 <option value="2">中文</option>
+                <option value="3">हिन्दी</option><!---Hindi---> 
+                <option value="4">Español</option><!---Spanish---> 
+                <option value="5">عربى</option> <!---Arabic---> 
             </select>
 
             <div v-if="!isEditing">
@@ -83,7 +86,7 @@
             <div v-else>
                 <input type="text" v-model="todo">
                 <input type="submit" v-bind:value="UPDATE[pulldown]" @click="updateTodo">
-                You choose "{{ todos[selectedIndex]}}".
+                {{YOU_CHOOSE[pulldown]}} "{{ todos[selectedIndex]}}".
             </div>
 
             <ol>
@@ -109,16 +112,60 @@
                 todo: '',
                 todos: [],
                 pulldown: '0',
-                ADD: ['ADD', '追加', '增加'],
-                EDIT: ['EDIT', '編集', '编辑'],
-                DELETE: ['DELETE', '削除', '删除'],
-                UPDATE: ['UPDATE', '更新', '更新']
+                YOU_CHOOSE: [
+                    'You choose',
+                    '現在編集中',
+                    '你选择',
+                    'आप चुनते हैं',
+                    'Tú eliges',
+                    'المختار الآن'
+                ],
+                PLEASE_ENTER_YOUR_TODO: [
+                    'Please enter your Todo.',
+                    'Todoを入力してください',
+                    '请输入你的任务',
+                    'कृपया अपना कार्य दर्ज करें',
+                    'Por favor, introduzca su misión',
+                    'الرجاء إدخال المهام الخاصة بك'
+                ],
+                ADD: [
+                    'ADD',
+                    '追加',
+                    '增加',
+                    'जोड़ें',
+                    'agregar',
+                    'يضيف'
+                ],
+                EDIT: [
+                    'EDIT',
+                    '編集', 
+                    '编辑',
+                    'संपादित करें',
+                    'Editar',
+                    'تعديل'
+                ],
+                DELETE: [
+                    'DELETE', 
+                    '削除', 
+                    '删除',
+                    'हटाना',
+                    'Eliminar',
+                    'حذف'
+                ],
+                UPDATE: [
+                    'UPDATE', 
+                    '更新', 
+                    '更新',
+                    'अद्यतन',
+                    'actualizar',
+                    'للتحديث'
+                ]
             },
 
             methods: {
                 storeTodo() {
                     if(this.todo == ''){
-                        alert("Please enter your Todo.");
+                        alert(this.PLEASE_ENTER_YOUR_TODO[this.pulldown]);
                     }else{
                     this.todos.push(this.todo)
                     }
@@ -133,7 +180,7 @@
 
                 updateTodo() {
                     if(this.todo == ''){
-                        alert("Please enter your Todo.");
+                        alert(this.PLEASE_ENTER_YOUR_TODO[this.pulldown]);
                     }else{
                         this.todos.splice(this.selectedIndex, 1, this.todo)
                         this.isEditing = false
