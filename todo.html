@@ -86,7 +86,7 @@
             <div v-else>
                 <input type="text" v-model="todo">
                 <input type="submit" v-bind:value="UPDATE[pulldown]" @click="updateTodo">
-                You choose "{{ todos[selectedIndex]}}".
+                {{YOU_CHOOSE[pulldown]}} "{{ todos[selectedIndex]}}".
             </div>
 
             <ol>
@@ -112,6 +112,22 @@
                 todo: '',
                 todos: [],
                 pulldown: '0',
+                YOU_CHOOSE: [
+                    'You choose',
+                    '現在編集中',
+                    '你选择',
+                    'आप चुनते हैं',
+                    'Tú eliges',
+                    'المختار الآن'
+                ],
+                PLEASE_ENTER_YOUR_TODO: [
+                    'Please enter your Todo.',
+                    'Todoを入力してください',
+                    '请输入你的任务',
+                    'कृपया अपना कार्य दर्ज करें',
+                    'Por favor, introduzca su misión',
+                    'الرجاء إدخال المهام الخاصة بك'
+                ],
                 ADD: [
                     'ADD',
                     '追加',
@@ -149,7 +165,7 @@
             methods: {
                 storeTodo() {
                     if(this.todo == ''){
-                        alert("Please enter your Todo.");
+                        alert(this.PLEASE_ENTER_YOUR_TODO[this.pulldown]);
                     }else{
                     this.todos.push(this.todo)
                     }
@@ -164,7 +180,7 @@
 
                 updateTodo() {
                     if(this.todo == ''){
-                        alert("Please enter your Todo.");
+                        alert(this.PLEASE_ENTER_YOUR_TODO[this.pulldown]);
                     }else{
                         this.todos.splice(this.selectedIndex, 1, this.todo)
                         this.isEditing = false
