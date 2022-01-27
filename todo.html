@@ -76,6 +76,10 @@
                 <option value="3">हिन्दी</option><!---Hindi---> 
                 <option value="4">Español</option><!---Spanish---> 
                 <option value="5">عربى</option> <!---Arabic---> 
+                <option value="6">한국어</option> <!---Korean---> 
+                <option value="7">русский</option> <!---Russian---> 
+                <option value="8">Deutsch</option> <!---German---> 
+                <option value="9">ελληνική γλώσσα</option> <!---Greek---> 
             </select>
 
             <div v-if="!isEditing">
@@ -118,7 +122,11 @@
                     '你选择',
                     'आप चुनते हैं',
                     'Tú eliges',
-                    'المختار الآن'
+                    'المختار الآن',
+                    '현재 편집 중',
+                    'Редактирование',
+                    'Jetzt bearbeiten',
+                    'Τώρα επεξεργασία'
                 ],
                 PLEASE_ENTER_YOUR_TODO: [
                     'Please enter your Todo.',
@@ -126,7 +134,12 @@
                     '请输入你的任务',
                     'कृपया अपना कार्य दर्ज करें',
                     'Por favor, introduzca su misión',
-                    'الرجاء إدخال المهام الخاصة بك'
+                    'الرجاء إدخال المهام الخاصة بك',
+                    '작업을 입력하세요',
+                    'Пожалуйста',
+                    'введите задание',
+                    'Bitte geben Sie eine Aufgabe ein',
+                    'Εισάγετε μια εργασία'
                 ],
                 ADD: [
                     'ADD',
@@ -134,7 +147,11 @@
                     '增加',
                     'जोड़ें',
                     'agregar',
-                    'يضيف'
+                    'يضيف',
+                    '추가',
+                    'Добавить',
+                    'hinzufügen',
+                    'Προσθέστε'
                 ],
                 EDIT: [
                     'EDIT',
@@ -142,7 +159,11 @@
                     '编辑',
                     'संपादित करें',
                     'Editar',
-                    'تعديل'
+                    'تعديل',
+                    '편집',
+                    'Редактирование',
+                    'Bearbeitung von',
+                    'Επεξεργασία'
                 ],
                 DELETE: [
                     'DELETE', 
@@ -150,7 +171,11 @@
                     '删除',
                     'हटाना',
                     'Eliminar',
-                    'حذف'
+                    'حذف',
+                    '삭제',
+                    'Удалить',
+                    'Löschen',
+                    'Διαγραφή'
                 ],
                 UPDATE: [
                     'UPDATE', 
@@ -158,7 +183,11 @@
                     '更新',
                     'अद्यतन',
                     'actualizar',
-                    'للتحديث'
+                    'للتحديث',
+                    '업데이트',
+                    'Обновление',
+                    'Update',
+                    'Ενημέρωση'
                 ]
             },
 
